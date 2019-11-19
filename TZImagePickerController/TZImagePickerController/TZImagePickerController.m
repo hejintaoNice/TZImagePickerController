@@ -254,6 +254,12 @@
                 }
             }];
         }];
+        
+        [previewVc setBackButtonClickBlock:^(BOOL isSelectOriginalPhoto) {
+            if (weakSelf.prewVcBackTapBlock) {
+                weakSelf.prewVcBackTapBlock();
+            }
+        }];
     }
     return self;
 }

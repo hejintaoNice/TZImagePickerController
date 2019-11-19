@@ -243,6 +243,9 @@
 @property (nonatomic, copy) void (^didFinishPickingVideoHandle)(UIImage *coverImage,PHAsset *asset);
 @property (nonatomic, copy) void (^didFinishPickingGifImageHandle)(UIImage *animatedImage,id sourceAssets);
 
+//用于裁剪弹出预览页面 返回按钮
+@property (nonatomic, copy) void(^prewVcBackTapBlock)(void);
+
 @property (nonatomic, weak) id<TZImagePickerControllerDelegate> pickerDelegate;
 
 @end
@@ -283,6 +286,7 @@
 // Decide asset show or not't
 // 决定照片显示与否
 - (BOOL)isAssetCanSelect:(PHAsset *)asset;
+
 @end
 
 
