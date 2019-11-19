@@ -255,11 +255,13 @@
             }];
         }];
         
-        [previewVc setBackButtonClickBlock:^(BOOL isSelectOriginalPhoto) {
+        previewVc.backButtonClickBlock = ^(BOOL isSelectOriginalPhoto) {
             if (weakSelf.prewVcBackTapBlock) {
                 weakSelf.prewVcBackTapBlock();
             }
-        }];
+        };
+        
+        
     }
     return self;
 }
