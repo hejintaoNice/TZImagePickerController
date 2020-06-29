@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MessageThrottle.h"
 
 typedef enum : NSUInteger {
     TZOscillatoryAnimationToBigger,
