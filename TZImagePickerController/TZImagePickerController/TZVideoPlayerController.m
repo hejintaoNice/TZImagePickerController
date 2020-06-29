@@ -42,8 +42,15 @@
     if (tzImagePickerVc) {
         self.navigationItem.title = tzImagePickerVc.previewBtnTitleStr;
     }
+    [self configButtonMTRule];
     [self configMoviePlayer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pausePlayerAndShowNaviBar) name:UIApplicationWillResignActiveNotification object:nil];
+}
+
+-(void)configButtonMTRule{
+    MTRule *rule = [[MTRule alloc] initWithTarget:self selector:@selector(doneButtonClick) durationThreshold:0.5];
+    rule.mode = MTPerformModeFirstly;
+    [MTEngine.defaultEngine applyRule:rule];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
