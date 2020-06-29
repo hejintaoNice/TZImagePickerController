@@ -210,6 +210,12 @@ static CGFloat itemMargin = 5;
     // [self updateCachedAssets];
 }
 
+-(void)configButtonMTRule{
+    MTRule *rule = [[MTRule alloc] initWithTarget:self selector:@selector(doneButtonClick) durationThreshold:0.5];
+    rule.mode = MTPerformModeFirstly;
+    [MTEngine.defaultEngine applyRule:rule];
+}
+
 - (void)configBottomToolBar {
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     if (!tzImagePickerVc.showSelectBtn) return;
@@ -286,6 +292,8 @@ static CGFloat itemMargin = 5;
     [_bottomToolBar addSubview:_originalPhotoButton];
     [self.view addSubview:_bottomToolBar];
     [_originalPhotoButton addSubview:_originalPhotoLabel];
+    
+    [self configButtonMTRule];
     
     if (tzImagePickerVc.photoPickerPageUIConfigBlock) {
         tzImagePickerVc.photoPickerPageUIConfigBlock(_collectionView, _bottomToolBar, _previewButton, _originalPhotoButton, _originalPhotoLabel, _doneButton, _numberImageView, _numberLabel, _divideLine);
