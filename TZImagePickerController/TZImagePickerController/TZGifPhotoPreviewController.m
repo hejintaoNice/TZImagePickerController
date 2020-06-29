@@ -67,6 +67,12 @@
     [self.view addSubview:_previewView];
 }
 
+-(void)configButtonMTRule{
+    MTRule *rule = [[MTRule alloc] initWithTarget:self selector:@selector(doneButtonClick) durationThreshold:0.5];
+    rule.mode = MTPerformModeFirstly;
+    [MTEngine.defaultEngine applyRule:rule];
+}
+
 - (void)configBottomToolBar {
     _toolBar = [[UIView alloc] initWithFrame:CGRectZero];
     CGFloat rgb = 34 / 255.0;
@@ -95,6 +101,8 @@
     [_toolBar addSubview:byteLabel];
     
     [self.view addSubview:_toolBar];
+    
+    [self configButtonMTRule];
     
     if (tzImagePickerVc.gifPreviewPageUIConfigBlock) {
         tzImagePickerVc.gifPreviewPageUIConfigBlock(_toolBar, _doneButton);
