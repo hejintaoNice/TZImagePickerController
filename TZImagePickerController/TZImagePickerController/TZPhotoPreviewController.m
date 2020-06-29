@@ -130,6 +130,12 @@
     [self.view addSubview:_naviBar];
 }
 
+-(void)configButtonMTRule{
+    MTRule *rule = [[MTRule alloc] initWithTarget:self selector:@selector(doneButtonClick) durationThreshold:0.5];
+    rule.mode = MTPerformModeFirstly;
+    [MTEngine.defaultEngine applyRule:rule];
+}
+
 - (void)configBottomToolBar {
     _toolBar = [[UIView alloc] initWithFrame:CGRectZero];
     static CGFloat rgb = 34 / 255.0;
@@ -184,6 +190,8 @@
     [_toolBar addSubview:_numberImageView];
     [_toolBar addSubview:_numberLabel];
     [self.view addSubview:_toolBar];
+    
+    [self configButtonMTRule];
     
     if (_tzImagePickerVc.photoPreviewPageUIConfigBlock) {
         _tzImagePickerVc.photoPreviewPageUIConfigBlock(_collectionView, _naviBar, _backButton, _selectButton, _indexLabel, _toolBar, _originalPhotoButton, _originalPhotoLabel, _doneButton, _numberImageView, _numberLabel);
